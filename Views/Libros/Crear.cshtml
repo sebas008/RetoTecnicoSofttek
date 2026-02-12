@@ -1,0 +1,47 @@
+﻿@model RetoTecnico.DTOs.LibroCreateDto
+
+@{
+    ViewBag.Title = "Registrar Libro";
+}
+
+<h2>Registrar Libro</h2>
+
+<p>
+    <a href="@Url.Action("Index")">⬅ Volver al listado</a>
+</p>
+
+@Html.ValidationSummary(true, "", new { style = "color:red;" })
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Título (*)</label><br />
+        @Html.TextBoxFor(m => m.Titulo)
+    </div>
+
+    <div>
+        <label>Año (*)</label><br />
+        @Html.TextBoxFor(m => m.Anio, new { type = "number" })
+    </div>
+
+    <div>
+        <label>Género</label><br />
+        @Html.TextBoxFor(m => m.Genero)
+    </div>
+
+    <div>
+        <label>Número de páginas</label><br />
+        @Html.TextBoxFor(m => m.NumeroPaginas, new { type = "number" })
+    </div>
+
+    <div>
+        <label>AutorId (*)</label><br />
+        @Html.TextBoxFor(m => m.AutorId, new { type = "number" })
+        <small>Debe existir un autor registrado</small>
+    </div>
+
+    <br />
+    <button type="submit">Guardar</button>
+}

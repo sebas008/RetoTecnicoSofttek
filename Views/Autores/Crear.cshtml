@@ -1,0 +1,41 @@
+﻿@model RetoTecnico.DTOs.AutorCreateDto
+
+@{
+    ViewBag.Title = "Registrar Autor";
+}
+
+<h2>Registrar Autor</h2>
+
+<p>
+    <a href="@Url.Action("Index")">⬅ Volver al listado</a>
+</p>
+
+@Html.ValidationSummary(true, "", new { style = "color:red;" })
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Nombre completo (*)</label><br />
+        @Html.TextBoxFor(m => m.NombreCompleto)
+    </div>
+
+    <div>
+        <label>Fecha de nacimiento (*)</label><br />
+        @Html.TextBoxFor(m => m.FechaNacimiento, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+
+    <div>
+        <label>Ciudad de procedencia</label><br />
+        @Html.TextBoxFor(m => m.CiudadProcedencia)
+    </div>
+
+    <div>
+        <label>Correo electrónico (*)</label><br />
+        @Html.TextBoxFor(m => m.CorreoElectronico, new { type = "email" })
+    </div>
+
+    <br />
+    <button type="submit">Guardar</button>
+}

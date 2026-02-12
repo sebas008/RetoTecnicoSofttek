@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RetoTecnico.Entidades.Libro>
+
+@{
+    ViewBag.Title = "Libros";
+}
+
+<h2>Listado de Libros</h2>
+
+<p>
+    <a href="@Url.Action("Crear")">➕ Registrar nuevo libro</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No hay libros registrados.</p>
+}
+else
+{
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Género</th>
+                <th>Páginas</th>
+                <th>AutorId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var libro in Model)
+            {
+                <tr>
+                    <td>@libro.LibroId</td>
+                    <td>@libro.Titulo</td>
+                    <td>@libro.Anio</td>
+                    <td>@libro.Genero</td>
+                    <td>@libro.NumeroPaginas</td>
+                    <td>@libro.AutorId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
